@@ -26,13 +26,14 @@ HOOK_FILE=$1
 #SHA1=$3
 COMMIT_MSG=`head - n1 $HOOK_FILE`
 PATTERN="^SC+-[0-9]+"
-if[[! ${COMMIT_MSG}=~ $PATTERN]]; then
+if[[ ! ${COMMIT_MSG}=~ $PATTERN]]; then
    echo ""
    echo "ERROR! Bad commit message."
    echo " '$COMMIT_MSG' is missing JIRA ticket number."
    echo " example: 'SC-1234: my commit'"
    echo ""
    exit 1
+fi 
 
 #/usr/bin/perl -i.bak -ne 'print unless(m/^. Please enter the commit message/..m/^#$/)' "$COMMIT_MSG_FILE"
 
