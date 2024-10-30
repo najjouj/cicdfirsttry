@@ -1,5 +1,6 @@
 # cicdfirsttry
-please copy and paste this in your hooks --->prepare-commit-msg and delete .sample in the file name#!/bin/sh
+please copy and paste this in your hooks --->prepare-commit-msg and delete .sample in the file name
+#!/bin/sh
 #
 # An example hook script to prepare the commit log message.
 # Called by "git commit" with the name of the file that has the
@@ -24,17 +25,16 @@ HOOK_FILE=$1
 #COMMIT_MSG_FILE=$1
 #COMMIT_SOURCE=$2
 #SHA1=$3
-COMMIT_MSG=`head - n1 $HOOK_FILE`
-PATTERN="^SC+-[0-9]+"
-if[[! ${COMMIT_MSG}=~ $PATTERN]]; then
+COMMIT_MSG=`head -n1 $HOOK_FILE`
+PATTERN="^SCRUM+-[0-9]+"
+if [[ ! ${COMMIT_MSG} =~ $PATTERN ]]; then
    echo ""
    echo "ERROR! Bad commit message."
    echo " '$COMMIT_MSG' is missing JIRA ticket number."
-   echo " example: 'SC-1234: my commit'"
+   echo " example: 'SCRUM-1234: my commit'"
    echo ""
    exit 1
-fi 
-
+fi
 #/usr/bin/perl -i.bak -ne 'print unless(m/^. Please enter the commit message/..m/^#$/)' "$COMMIT_MSG_FILE"
 
 # case "$COMMIT_SOURCE,$SHA1" in
