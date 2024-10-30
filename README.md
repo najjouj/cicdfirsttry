@@ -1,6 +1,5 @@
 # cicdfirsttry
-please copy and paste this in your hooks --->prepare-commit-msg and delete .sample in the file name
-#!/bin/sh
+please copy and paste this in your hooks --->prepare-commit-msg and delete .sample in the file name#!/bin/sh
 #
 # An example hook script to prepare the commit log message.
 # Called by "git commit" with the name of the file that has the
@@ -22,9 +21,9 @@ please copy and paste this in your hooks --->prepare-commit-msg and delete .samp
 # The third example adds a Signed-off-by line to the message, that can
 # still be edited.  This is rarely a good idea.
 HOOK_FILE=$1
-COMMIT_MSG_FILE=$1
-COMMIT_SOURCE=$2
-SHA1=$3
+#COMMIT_MSG_FILE=$1
+#COMMIT_SOURCE=$2
+#SHA1=$3
 COMMIT_MSG=`head - n1 $HOOK_FILE`
 PATTERN="^SC+-[0-9]+"
 if[[! ${COMMIT_MSG}=~ $PATTERN]]; then
@@ -35,7 +34,7 @@ if[[! ${COMMIT_MSG}=~ $PATTERN]]; then
    echo ""
    exit 1
 
-/usr/bin/perl -i.bak -ne 'print unless(m/^. Please enter the commit message/..m/^#$/)' "$COMMIT_MSG_FILE"
+#/usr/bin/perl -i.bak -ne 'print unless(m/^. Please enter the commit message/..m/^#$/)' "$COMMIT_MSG_FILE"
 
 # case "$COMMIT_SOURCE,$SHA1" in
 #  ,|template,)
